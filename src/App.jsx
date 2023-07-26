@@ -1,10 +1,10 @@
-import React from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import ErrorMessage from './ErrorMessage';
-import LoadingSpinner from './LoadingSpinner';
-import PokemonList from './PokemonList';
-import PokemonPage from './PokemonPage';
-import { useApi } from './useApi';
+import React from 'react'
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import ErrorMessage from './ErrorMessage'
+import LoadingSpinner from './LoadingSpinner'
+import PokemonList from './PokemonList'
+import PokemonPage from './PokemonPage'
+import { useApi } from './useApi'
 
 const mapResults = ({ results }) =>
   results.map(({ url, name }) => ({
@@ -20,10 +20,10 @@ const App = () => {
     isLoading,
   } = useApi('https://pokeapi.co/api/v2/pokemon/?limit=50', mapResults);
   if (isLoading) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner />
   }
   if (error) {
-    return <ErrorMessage error={error} />;
+    return <ErrorMessage error={error} />
   }
 
   return (
@@ -38,8 +38,8 @@ const App = () => {
             const pokemonId = pokemonList.find(
               ({ name }) => name === routeParams.match.params.name
             ).id;
-            const previous = pokemonList.find(({ id }) => id === pokemonId - 1);
-            const next = pokemonList.find(({ id }) => id === pokemonId + 1);
+            const previous = pokemonList.find(({ id }) => id === pokemonId - 1)
+            const next = pokemonList.find(({ id }) => id === pokemonId + 1)
             return (
               <PokemonPage
                 pokemonList={pokemonList}
@@ -54,4 +54,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App
