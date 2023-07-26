@@ -11,14 +11,14 @@ const mapResults = ({ results }) =>
     url,
     name,
     id: parseInt(url.match(/\/(\d+)\//)[1]),
-  }));
+  }))
 
 const App = () => {
   const {
     data: pokemonList,
     error,
     isLoading,
-  } = useApi('https://pokeapi.co/api/v2/pokemon/?limit=50', mapResults);
+  } = useApi('https://pokeapi.co/api/v2/pokemon/?limit=50', mapResults)
   if (isLoading) {
     return <LoadingSpinner />
   }
@@ -37,7 +37,7 @@ const App = () => {
           render={(routeParams) => {
             const pokemonId = pokemonList.find(
               ({ name }) => name === routeParams.match.params.name
-            ).id;
+            ).id
             const previous = pokemonList.find(({ id }) => id === pokemonId - 1)
             const next = pokemonList.find(({ id }) => id === pokemonId + 1)
             return (
@@ -46,12 +46,12 @@ const App = () => {
                 previous={previous}
                 next={next}
               />
-            );
+            )
           }}
         />
       </Switch>
     </Router>
-  );
-};
+  )
+}
 
 export default App
