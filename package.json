@@ -8,7 +8,8 @@
     "start-prod": "node app.js",
     "test": "jest",
     "eslint": "eslint './**/*.{js,jsx}'",
-    "build": "webpack --mode production --openssl-legacy-provider",
+    "build": "npm install && webpack --mode production --openssl-legacy-provider",
+    "deploy:full": "npm run build && git add . && git commit -m uibuild && git push",
     "cypress:open": "cypress open",
     "test:e2e": "cypress run"
   },
