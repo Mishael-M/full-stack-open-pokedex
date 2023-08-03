@@ -17,3 +17,7 @@ app.get('/version', (req, res) => {
 app.get('/health', (req, res) => {
   res.send('ok')
 })
+
+app.get('/new', (req, res) => {
+  res.send('new branch')
+})
